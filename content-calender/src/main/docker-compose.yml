@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+    content-calender:
+        build: .
+        container_name: content-calender
+        ports:
+        - "8080:8080"
+        environment:
+        - SPRING_PROFILES_ACTIVE=dev
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/content_calendar
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=password
+        depends_on:
+        - db
+
+    db:
+        image: postgres:16-alpine
+        container_name: content-calender-db
+        environment:
+         POSTGRES_USERNAME: postgres
+         POSTGRES_PASSWORD: password
+
+        ports:
+        - "5433:5432"
+        volumes:
+        - db_data:/var/lib/postgresql/data
+        healthcheck:
+          test: [ "CMD-SHELL", "pg_isready -U postgres -d content_calendar" ]
+          interval: 5s
+          timeout: 5s
+          retries: 10
+
