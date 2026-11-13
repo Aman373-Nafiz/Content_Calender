@@ -2,7 +2,7 @@
   {
     "id": null,
     "title": "Hello Chat GPT",
-    "desc": "All about Chat GPT",
+    "description": "All about Chat GPT",
     "status": "IDEA",
     "contentType": "VIDEO",
     "dateCreated": "2026-11-01T10:00:00",
@@ -12,7 +12,7 @@
   {
     "id": null,
     "title": "Spring Boot REST API basics",
-    "desc": "Controller, repository and JSON in a small Spring Boot app",
+    "description": "Controller, repository and JSON in a small Spring Boot app",
     "status": "IN_PROGRESS",
     "contentType": "ARTICLE",
     "dateCreated": "2026-11-05T09:30:00",
@@ -22,7 +22,7 @@
   {
     "id": null,
     "title": "Spring Data JDBC explained",
-    "desc": "How a Java record maps to a table",
+    "description": "How a Java record maps to a table",
     "status": "COMPLETED",
     "contentType": "ARTICLE",
     "dateCreated": "2026-10-20T14:00:00",
@@ -32,7 +32,7 @@
   {
     "id": null,
     "title": "Data engineering portfolio talk",
-    "desc": "Conference talk about portfolio projects",
+    "description": "Conference talk about portfolio projects",
     "status": "PUBLISHED",
     "contentType": "CONFERENCE_TALK",
     "dateCreated": "2026-09-15T12:00:00",
