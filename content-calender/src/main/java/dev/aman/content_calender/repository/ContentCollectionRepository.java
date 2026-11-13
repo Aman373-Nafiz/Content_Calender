@@ -31,7 +31,9 @@ public class ContentCollectionRepository {
 public boolean existsById(Integer id) {
     return content.stream().anyMatch(c -> c.id().equals(id));
   }
+
   public void save(Content c) {
+    content.removeIf(x -> x.id().equals(c.id()));
     content.add(c);
   }
 
@@ -46,8 +48,7 @@ public boolean existsById(Integer id) {
       content.removeIf(x -> x.id().equals(id));
       content.add(c);
     } else {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id in path and request body do not match");
-    }
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found.");    }
   }
 
   @PostConstruct

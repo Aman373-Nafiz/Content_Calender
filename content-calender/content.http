@@ -1,38 +1,59 @@
-### Find All Content
+### Find all content
 GET http://localhost:8080/api/content
 
-### Get Content by ID
+### Get content by id
 GET http://localhost:8080/api/content/1
 
-### Create new Content
+### Create new content (id must be null; the server sets dateCreated)
 POST http://localhost:8080/api/content
 Content-Type: application/json
 
 {
-  "id": 3,
+  "id": null,
   "title": "My third blog post",
-  "description": "My newest blog for the team",
+  "desc": "My newest blog for the team",
   "status": "IDEA",
   "contentType": "ARTICLE",
-  "createdAt": "2026-06-01T12:00:00",
-  "updatedAt": null,
-  "url": "https://youtube.com/shorts/QijWFU2j-dI?si=qr11faGGiYy5E9qx"
+  "dateCreated": null,
+  "dateUpdated": null,
+  "url": ""
 }
 
-### Update existing Content
+### Update existing content (the path id wins)
 PUT http://localhost:8080/api/content/1
 Content-Type: application/json
 
 {
   "id": 1,
   "title": "MY FIRST POST!!!",
-  "description": "MY FIRST POST!!!",
-  "status": "IDEA",
+  "desc": "MY FIRST POST!!!",
+  "status": "IN_PROGRESS",
   "contentType": "ARTICLE",
-  "dateCreated": "2023-02-13T10:25:02.838496",
-  "dateUpdated": "2023-02-13T10:25:02.838496",
+  "dateCreated": null,
+  "dateUpdated": null,
   "url": "http://localhost:8080/my-first-blog-post"
 }
 
-### Delete Content by ID
+### Update with an id that does not exist -> 404
+PUT http://localhost:8080/api/content/99
+Content-Type: application/json
+
+{
+  "id": 99,
+  "title": "Nope",
+  "desc": "Nope",
+  "status": "IDEA",
+  "contentType": "ARTICLE",
+  "dateCreated": null,
+  "dateUpdated": null,
+  "url": ""
+}
+
+### Search by title keyword
+GET http://localhost:8080/api/content/filter/spring
+
+### List by status (IDEA, IN_PROGRESS, COMPLETED, PUBLISHED)
+GET http://localhost:8080/api/content/filter/status/IDEA
+
+### Delete by id
 DELETE http://localhost:8080/api/content/1
